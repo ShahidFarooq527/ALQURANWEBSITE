@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#126747">
+  <title>قرآن پاک مع اردو ترجمہ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="topbar" id="topbar">
+    <div class="header-row">
+      <div class="brand">📖 قرآن پاک</div>
+      <div class="header-left">
+        <div id="userTop" class="user-top" hidden>
+          <span>✉️</span><span id="topEmail"></span>
+          <button id="logoutBtn" type="button">لاگ آؤٹ</button>
+        </div>
+        <button id="menuToggle" class="menu-toggle" type="button" aria-label="مینیو کھولیں" aria-expanded="false" aria-controls="topMenu">☰</button>
+      </div>
+    </div>
+    <nav id="topMenu" class="top-menu" hidden>
+      <button type="button" data-target="quranSection">📖 قرآن پاک</button>
+      <button type="button" data-target="packageSection">💳 پیکیجز</button>
+      <button type="button" data-target="subscriptionSection">📋 میری سبسکرپشن</button>
+      <button type="button" data-target="accountSection">👤 اکاؤنٹ</button>
+      <button type="button" id="closeMenu">✖ مینیو بند کریں</button>
+    </nav>
+  </header>
+  
+  <main class="container">
+    <section id="accountSection" class="card">
+      <h2>👤 اکاؤنٹ</h2>
+      <div id="authForm">
+        <input
+id="email"
+type="email"
+placeholder="ای میل"
+autocomplete="email"
+dir="ltr"
+style="text-align: left;"
+
+
+     <div class="password-wrapper">
+  <input
+    id="password"
+    type="password"
+    placeholder="پاس ورڈ"
+    autocomplete="current-password"
+  >
+
+  <button
+    type="button"
+    id="togglePassword"
+    class="eye-btn"
+    aria-label="پاس ورڈ دکھائیں"
+    aria-pressed="false"
+  >👁️</button>
+</div>
+        <div class="button-row">
+          <button id="signupBtn" type="button">نیا اکاؤنٹ بنائیں</button>
+          <button id="loginBtn" type="button">لاگ اِن</button>
+        </div>
+      </div>
+      <p id="authMsg" class="message" role="status" aria-live="polite"></p>
+    </section>
+    
+    <section id="packageSection" class="card">
+      <h2>💳 سبسکرپشن پیکیجز</h2>
+      <p>قرآن پڑھنے کے لیے اپنی پسند کا پیکیج منتخب کریں۔</p>
+    
+<div class="packages">
+
+  <div class="package-card">
+    <h3>7 دن کا پیکیج</h3>
+    <p class="package-price">10 روپے</p>
+    <button class="package-buy" type="button"
+      data-days="7" data-price="10">
+      پیکیج خریدیں
+    </button>
+  </div>
+
+  <div class="package-card">
+    <h3>14 دن کا پیکیج</h3>
+    <p class="package-price">20 روپے</p>
+    <button class="package-buy" type="button"
+      data-days="14" data-price="20">
+      پیکیج خریدیں
+    </button>
+  </div>
+
+  <div class="package-card">
+    <h3>30 دن کا پیکیج</h3>
+    <p class="package-price">50 روپے</p>
+    <button class="package-buy" type="button"
+      data-days="30" data-price="50">
+      پیکیج خریدیں
+    </button>
+  </div>
+
+</div>
+
+      <div id="paymentForm" hidden>
+        <h3>💰 ادائیگی کی تفصیلات</h3>
+        <p id="selectedPlan"></p>
+        <div id="paymentDetails">
+          اپنی JazzCash، Easypaisa یا بینک اکاؤنٹ کی تفصیلات یہاں درج کریں۔
+        </div>
+        <label for="method">ادائیگی کا طریقہ</label>
+        <select id="method">
+          <option value="JazzCash">JazzCash</option>
+          <option value="Easypaisa">Easypaisa</option>
+          <option value="Bank Transfer">Bank Transfer</option>
+        </select>
+        <label for="transactionId">ٹرانزیکشن نمبر</label>
+        <input id="transactionId" type="text" placeholder="ٹرانزیکشن نمبر درج کریں" autocomplete="off">
+        <button id="sendRequest" type="button">
+          ادائیگی کی درخواست بھیجیں
+        </button>
+        <p id="paymentMsg" class="message" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+    
+   
+<section id="subscriptionSection" class="card">
+  <h2>📋 میری سبسکرپشن</h2>
+
+  <p id="subscriptionStatus">
+    براہِ کرم لاگ اِن کریں۔
+  </p>
+
+  <div id="subscriptionDetails"></div>
+
+  <div id="myRequestsSection">
+    <h3>📦 میری پیکیج درخواستیں</h3>
+    <div id="myPaymentRequests">
+      درخواستیں لوڈ ہو رہی ہیں…
+    </div>
+  </div>
+</section>
+
+    
+    <section id="quranSection" class="card">
+      <h2>📖 قرآن کریم مع اردو ترجمہ</h2>
+      <div id="readerLock">
+        <p>قرآن پڑھنے کے لیے فعال سبسکرپشن ضروری ہے۔</p>
+      </div>
+      <div id="reader" hidden>
+        <label for="surahSelect">سورت منتخب کریں</label>
+        <select id="surahSelect"></select>
+        <div id="surahHeading"></div>
+        <div id="verses"></div>
+        <div class="surah-navigation">
+          <button id="prevSurah" type="button">← پچھلی سورت</button>
+          <button id="nextSurah" type="button">اگلی سورت →</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <footer class="footer">📖 قرآن پاک مع اردو ترجمہ</footer>
+  <script type="module" src="main.js"></script>
+</body>
+
+</html>
+
+
+
+
+
+

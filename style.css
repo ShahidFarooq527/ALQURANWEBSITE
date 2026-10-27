@@ -1,0 +1,806 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --green: #126747;
+  --green-dark: #084d37;
+  --green-light: #e6f6ed;
+  --gold: #d6a43b;
+  --text: #20372b;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 115px;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, "Noto Nastaliq Urdu", sans-serif;
+  background:
+    radial-gradient(circle at top right, #d8f5e5, transparent 32%),
+    radial-gradient(circle at bottom left, #e5eaff, transparent 30%),
+    #f5f8f6;
+  color: var(--text);
+  line-height: 1.8;
+  font-weight: 500;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  background: var(--green);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 800;
+  box-shadow: 0 3px 8px #123d2710;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 13px #123d2720;
+}
+
+button:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* ===== HEADER ===== */
+
+.topbar {
+  background: linear-gradient(
+    125deg,
+    var(--green-dark),
+    #16845b,
+    var(--green)
+  );
+  color: white;
+  padding: 12px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 8px #0002;
+  border-bottom: 3px solid var(--gold);
+}
+
+.header-row {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  width: 100%;
+}
+
+.header-left {
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: flex-start;
+gap: 8px;
+width: 100%;
+min-width: 0;
+order: 1;
+}
+
+.user-top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 1 1 auto;
+  gap: 6px;
+  min-width: 0;
+  max-width: calc(100% - 45px);
+  flex-wrap: nowrap;
+  font-size: 13px;
+}
+
+#userTop[hidden] {
+  display: none !important;
+}
+
+#topEmail {
+  display: block;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  text-align: right;
+  font-size: 12px;
+}
+
+.user-top button {
+  background: white;
+  color: var(--green);
+}
+
+#logoutBtn {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  padding: 7px 9px;
+  font-size: 12px;
+}
+
+.menu-toggle {
+  flex: 0 0 auto;
+  background: white;
+  color: var(--green);
+  font-size: 21px;
+  min-width: 42px;
+  padding: 5px 10px;
+  white-space: nowrap;
+}
+
+.brand {
+  display: block;
+  order: 2;
+  width: 100%;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 900;
+  white-space: normal;
+}
+
+/* ===== LEFT SIDEBAR ===== */
+
+.top-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: auto;
+  width: 230px;
+  max-width: 85vw;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  margin: 0;
+  padding: 12px;
+  box-sizing: border-box;
+  background: #126747;
+  border-radius: 0 0 10px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+}
+
+.top-menu button {
+  display: block;
+  width: 100%;
+  margin: 0;
+  text-align: right;
+  background: white;
+  color: var(--green);
+  padding: 10px 14px;
+  box-sizing: border-box;
+}
+
+.top-menu button:hover {
+  background: #e8f5ed;
+}
+
+#topMenu[hidden] {
+  display: none !important;
+}
+
+/* ===== MAIN CONTENT ===== */
+
+.container {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 0 14px;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  background: white;
+  padding: 20px;
+  margin-bottom: 18px;
+  border: 1px solid #dcebe1;
+  border-radius: 18px;
+  box-shadow: 0 6px 22px #16452c12;
+  scroll-margin-top: 115px;
+}
+
+.card::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 75px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--gold), #24a675);
+  border-radius: 0 0 8px 8px;
+}
+
+h2 {
+  color: var(--green);
+  font-weight: 900;
+  margin-top: 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e4f1e8;
+}
+
+h3 {
+  color: #176b4b;
+  font-weight: 800;
+}
+
+.message {
+  overflow-wrap: anywhere;
+}
+
+/* ===== FORMS ===== */
+
+input,
+select {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #cbded1;
+  border-radius: 11px;
+  background: white;
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+input:focus,
+select:focus {
+  border-color: #16845b;
+  box-shadow: 0 0 0 3px #16845b18;
+  outline: none;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.button-row button {
+  flex: 1;
+}
+
+/* ===== PACKAGES ===== */
+
+.packages {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 18px 0;
+  width: 100%;
+}
+
+.package {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 70px;
+  padding: 12px;
+  color: var(--green);
+  border: 2px solid #c5e4d1;
+}
+
+.packages .package:nth-child(1) {
+  background: #e4f8eb;
+  border-color: #8dd4a7;
+}
+
+.packages .package:nth-child(2) {
+  background: #e9f1ff;
+  border-color: #9ebcf2;
+}
+
+.packages .package:nth-child(3) {
+  background: #f1eaff;
+  border-color: #c4a7ef;
+}
+
+.packages .package:nth-child(4) {
+  background: #fff2d9;
+  border-color: #e9c778;
+}
+
+.packages .package.selected {
+  background: linear-gradient(135deg, #126747, #1b9666);
+  color: white;
+  border-color: var(--gold);
+}
+
+/* ===== PAYMENT REQUEST BUTTON ===== */
+/* HTML میں اصل بٹن ID sendRequest ہے */
+
+#buyBtn,
+#sendPaymentRequestBtn,
+#paymentRequestBtn,
+#sendRequest {
+  display: block;
+  width: 100%;
+  min-height: 50px;
+  margin-top: 14px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #126747, #1b9666);
+  color: white;
+  border: 2px solid var(--gold);
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+#buyBtn:hover:not(:disabled),
+#sendPaymentRequestBtn:hover:not(:disabled),
+#paymentRequestBtn:hover:not(:disabled),
+#sendRequest:hover:not(:disabled) {
+  background: linear-gradient(135deg, #084d37, #126747);
+}
+
+/* ===== PAYMENT FORM ===== */
+
+#paymentForm {
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #f0faf4, #f4f7ff);
+  border: 1px solid #d9e9df;
+}
+
+#paymentDetails {
+  background: #edf7f0;
+  padding: 12px;
+  border-radius: 8px;
+  border-right: 4px solid #1a9866;
+  overflow-wrap: anywhere;
+  font-weight: 700;
+}
+
+/* ===== SUBSCRIPTION ===== */
+
+#subscriptionDetails {
+  overflow-wrap: anywhere;
+}
+
+#subscriptionDetails p {
+  background: #edf7f0;
+  border-right: 4px solid #1a9866;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin: 8px 0;
+  font-weight: 700;
+}
+
+/* ===== QURAN ===== */
+
+#surahHeading {
+  text-align: center;
+  margin: 20px 0;
+  padding: 14px 10px;
+  border: 1px solid #e5d19a;
+  border-radius: 13px;
+  background: linear-gradient(135deg, #fff9e8, #f1faee);
+  color: #145b40;
+  font-size: 24px;
+  font-weight: 900;
+  box-shadow: 0 3px 10px #76591a0b;
+}
+
+#verses {
+  overflow-wrap: anywhere;
+}
+
+.verse {
+  margin: 12px 0;
+  padding: 18px 14px;
+  border: 1px solid #e1ebe4;
+  border-right: 4px solid #79c69a;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #ffffff, #f8fcf9);
+  box-shadow: 0 3px 12px #174a2c09;
+  scroll-margin-top: 125px;
+}
+
+.verse:nth-child(4n + 2) {
+  background: linear-gradient(135deg, #ffffff, #f0f6ff);
+  border-right-color: #86aee8;
+}
+
+.verse:nth-child(4n + 3) {
+  background: linear-gradient(135deg, #ffffff, #f6f0ff);
+  border-right-color: #b9a0e9;
+}
+
+.verse:nth-child(4n + 4) {
+  background: linear-gradient(135deg, #ffffff, #fff7e9);
+  border-right-color: #e5c16e;
+}
+
+.arabic {
+  direction: rtl;
+  text-align: right;
+  font-family: "Amiri", "Noto Naskh Arabic", serif;
+  font-size: 30px;
+  line-height: 2.25;
+  color: #153f2c;
+  font-weight: 700;
+}
+
+.translation {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #edf5ef;
+  color: #354c3d;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 2;
+}
+
+.verse-number {
+  display: inline-block;
+  background: #fff4cf;
+  color: #71551b;
+  border: 1px solid #d8bc68;
+  border-radius: 50%;
+  min-width: 32px;
+  text-align: center;
+  margin: 0 5px;
+  font-size: 15px;
+  font-weight: 900;
+  vertical-align: middle;
+}
+
+/* ===== SURAH NAVIGATION ===== */
+
+.surah-navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 24px;
+  padding-top: 12px;
+}
+
+.surah-navigation button {
+  flex: 1;
+  min-height: 48px;
+  background: linear-gradient(135deg, #126747, #198b60);
+  border: 1px solid #d5b75f;
+  border-radius: 12px;
+}
+
+#prevSurah {
+  background: linear-gradient(135deg, #345b9b, #527cc1);
+}
+
+#nextSurah {
+  background: linear-gradient(135deg, #126747, #1c9867);
+}
+
+/* ===== FOOTER ===== */
+
+.footer {
+  background: linear-gradient(120deg, #084d37, #16845b);
+  color: white;
+  text-align: center;
+  padding: 14px;
+  border-top: 3px solid var(--gold);
+  font-weight: 800;
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 700px) {
+  .header-row {
+    gap: 8px;
+  }
+
+  .header-left {
+    max-width: 100%;
+  }
+
+  .brand {
+    font-size: 18px;
+  }
+
+  .user-top {
+    max-width: calc(100% - 45px);
+    font-size: 12px;
+  }
+
+  #topEmail {
+    max-width: 125px;
+  }
+
+  .user-top button {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+
+  .container {
+    padding: 0 10px;
+    margin-top: 14px;
+  }
+
+  .card {
+    padding: 16px 12px;
+    border-radius: 15px;
+  }
+
+  .packages {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .arabic {
+    font-size: 27px;
+    line-height: 2.2;
+  }
+
+  .translation {
+    font-size: 17px;
+  }
+
+  .verse {
+    padding: 15px 10px;
+  }
+
+  .surah-navigation {
+    gap: 8px;
+  }
+
+  .surah-navigation button {
+    font-size: 13px;
+    padding: 9px 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  #topbar .header-row {
+    gap: 8px;
+  }
+
+  #topbar .header-left {
+    gap: 6px;
+  }
+
+  #topbar #userTop.user-top {
+    gap: 4px;
+  }
+
+  #topbar #topEmail {
+    font-size: 11px;
+  }
+
+  #topbar #logoutBtn {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+
+  #topbar .brand {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 380px) {
+  #topbar #userTop.user-top {
+    gap: 4px;
+  }
+
+  #topbar #topEmail {
+    font-size: 10px;
+  }
+
+  #topbar #logoutBtn {
+    padding: 6px;
+    font-size: 11px;
+  }
+
+  #topbar .brand {
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 360px) {
+  .menu-toggle {
+    min-width: 36px;
+    padding: 4px 8px;
+  }
+
+  .brand {
+    font-size: 16px;
+  }
+}
+
+/* قرآن کے متن کو منتخب کرنے کی پابندی */
+
+#verses,
+#verses * {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* پرنٹ کے وقت صفحہ چھپائیں */
+
+@media print {
+  body {
+    display: none !important;
+  }
+}
+
+
+.packages {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin: 18px 0;
+}
+
+.package-card {
+  background: #f0faf4;
+  border: 2px solid #c5e4d1;
+  border-radius: 14px;
+  padding: 18px;
+  text-align: center;
+}
+
+.package-card h3 {
+  margin-top: 0;
+  color: #126747;
+}
+
+.package-price {
+  font-size: 22px;
+  font-weight: 900;
+  color: #084d37;
+}
+
+.package-buy {
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  background: linear-gradient(135deg, #084d37, #1b9666);
+  color: white;
+  border: 2px solid #d6a43b;
+  border-radius: 10px;
+  font-weight: 900;
+  font-size: 16px;
+}
+
+.package-buy:hover {
+  background: #084d37;
+}
+
+
+#myRequestsSection {
+  margin-top: 20px;
+  padding: 15px;
+  background: #f0faf4;
+  border: 1px solid #c5e4d1;
+  border-radius: 12px;
+}
+
+#myPaymentRequests p {
+  padding: 12px;
+  margin: 10px 0;
+  background: white;
+  border-right: 4px solid #d6a43b;
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+}
+
+
+/* Password Eye Button */
+
+.password-wrapper {
+  position: relative;
+  width: 100%;
+  direction: ltr;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 50px;
+}
+
+.password-wrapper .eye-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  color: #126747;
+  border: none;
+  box-shadow: none;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.password-wrapper .eye-btn:hover {
+  transform: translateY(-50%);
+  background: #e6f6ed;
+  box-shadow: none;
+}
+#email {
+  direction: ltr;
+  text-align: left;
+}
+
+#email::placeholder {
+  direction: ltr;
+  text-align: left;
+}
+
+.button-row {
+display: flex;
+flex-direction: row-reverse;
+gap: 8px;
+}
+
+.button-row button {
+flex: 1;
+}
+
+/* مینیو آئیکن اور سائیڈ بار ہمیشہ بائیں طرف */
+
+
+
+/* مینیو آئیکن بائیں طرف رکھنے کی سیٹنگ */
+
+#topbar .header-left {
+  direction: ltr !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+#topbar #menuToggle {
+  order: 0 !important;
+  margin: 0 !important;
+}
+
+#topbar #userTop {
+  order: 1 !important;
+  direction: rtl;
+  margin-left: auto;
+}
+
+#topMenu {
+  left: 0 !important;
+  right: auto !important;
+}
