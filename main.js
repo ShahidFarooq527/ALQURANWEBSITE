@@ -690,6 +690,7 @@ onAuthStateChanged(auth, async user => {
 
   if (user) {
     if (authForm) authForm.hidden = true;
+    if ($("authButtons")) $("authButtons").hidden = true;
     if (userTop) userTop.hidden = false;
     if (topEmail) topEmail.textContent = user.email || "";
     if (authMsg) authMsg.textContent = "";
@@ -701,6 +702,7 @@ onAuthStateChanged(auth, async user => {
     selectedPlan = null;
 
     if (authForm) authForm.hidden = false;
+    if ($("authButtons")) $("authButtons").hidden = false;
     if (userTop) userTop.hidden = true;
     if (topEmail) topEmail.textContent = "";
     if (authMsg) authMsg.textContent = "";
@@ -719,6 +721,13 @@ onAuthStateChanged(auth, async user => {
   }
 
   closeMenu();
+
+if (user) {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
 });
 
 document.addEventListener("DOMContentLoaded", async () => {
