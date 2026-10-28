@@ -870,3 +870,96 @@ flex: 1;
   margin: 0 !important;
   z-index: 9999 !important;
 }
+
+
+/* ===== QURAN APP DOWNLOAD BANNER ===== */
+
+.app-download-banner {
+  max-width: 972px;
+  margin: 20px auto;
+  padding: 22px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  text-align: center;
+  background: linear-gradient(135deg, #e6f6ed, #ffffff);
+  border: 2px solid #c5e4d1;
+  border-radius: 18px;
+  box-shadow: 0 6px 22px #16452c12;
+}
+
+.app-download-icon {
+  font-size: 42px;
+  flex-shrink: 0;
+}
+
+.app-download-content {
+  min-width: 0;
+}
+
+.app-download-content h2 {
+  margin: 0 0 8px;
+  padding: 0;
+  border: none;
+  color: #126747;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.app-download-content p {
+  margin: 0 0 15px;
+  color: #354c3d;
+  font-size: 15px;
+}
+
+.app-download-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #084d37, #1b9666);
+  color: white;
+  text-decoration: none;
+  border: 2px solid #d6a43b;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 900;
+  box-shadow: 0 3px 8px #123d2710;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.app-download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 13px #123d2720;
+}
+
+.app-download-btn:focus-visible {
+  outline: 3px solid #d6a43b;
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .app-download-banner {
+    margin: 14px 10px;
+    padding: 18px 12px;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .app-download-icon {
+    font-size: 36px;
+  }
+
+  .app-download-content h2 {
+    font-size: 19px;
+  }
+
+  .app-download-content p {
+    font-size: 14px;
+  }
+
+  .app-download-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+  }
+}
